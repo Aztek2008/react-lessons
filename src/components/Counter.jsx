@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CounterControls from './CounterControls/CounterControls';
 
 export default class Counter extends Component {
   static propTypes = {};
@@ -36,15 +37,11 @@ export default class Counter extends Component {
   render() {
     return (
       <div>
-        <button type="button" onClick={this.handleDecrement}>
-          Decrement
-        </button>
-
+        <CounterControls
+          onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
+        />
         <span>{this.state.value}</span>
-
-        <button type="button" onClick={this.handleIncrement}>
-          Increment
-        </button>
       </div>
     );
   }
