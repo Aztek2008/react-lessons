@@ -1,11 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const TaskEditor = ({ onAddTask }) => (
-  <div className="TaskEditor">
-    <button type="button" onClick={onAddTask}>
-      Add Task
-    </button>
-  </div>
-);
+import './TaskEditor.css';
 
-export default TaskEditor;
+export default class TaskEditor extends Component {
+  state = {
+    text: '',
+  };
+
+  handleChange = e => {
+    this.setState({
+      text: e.target.value,
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    // DONT ADD TASK IF EMPTY
+    this.state.text !== '' && this.props.onAddTask(this.state.text);
+    // this.props.onAddTask(this.state.text);
+
+    this.setState({
+      text: '',
+    });
+  };
+
+  render() {
+    return (
+      <form className="TaskEditor" onSubmit={this.handleSubmit}>
+        <label className="TaskEditor-label">
+          Text
+          <input
+            className="TaskEditor-input"
+            type="text"
+            value={this.state.text}
+            onChange={this.handleChange}
+          />
+        </label>
+        <button type="submit" className="TaskEditor-button">
+          Add Note
+        </button>
+      </form>
+    );
+  }
+}
+
+{
+  /* <div className="TaskEditor">
+<button type="button" onClick={onAddTask}>
+  Add Task
+</button>
+</div> */
+}

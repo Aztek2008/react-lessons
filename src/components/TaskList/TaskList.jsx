@@ -1,22 +1,17 @@
 import React from 'react';
+import TaskListItem from '../TaskListItem';
 import './TaskList.css';
 
-const TaskList = ({ tasks, onRemoveTask }) => (
+const TaskList = ({ tasks, onRemoveTask, onUpdateTask }) => (
   <ul className="TaskList">
-    {tasks.map(({ id, text }) => (
-      <li key={id} className="TaskList-item">
-        <p className="TaskList-text">{text}</p>
-
-        <section className="TaskList-actions">
-          <button
-            className="TasList-button"
-            type="button"
-            onClick={() => onRemoveTask(id)}
-          >
-            Delete Task
-          </button>
-        </section>
-      </li>
+    {tasks.map(({ id, text, completed }) => (
+      <TaskListItem
+        key={id}
+        text={text}
+        completed={completed}
+        onRemove={() => onRemoveTask(id)}
+        onUpdate={() => onUpdateTask(id)}
+      />
     ))}
   </ul>
 );
