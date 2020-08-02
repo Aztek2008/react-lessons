@@ -18,7 +18,6 @@ export default class App extends Component {
   };
 
   addTask = text => {
-    // const task = createTask();
     const task = {
       id: uuid(),
       text,
@@ -40,6 +39,23 @@ export default class App extends Component {
     });
   };
 
+  // updateCompleted = taskId => {
+  //   this.setState(prevState => {
+  //     return {
+  //       tasks: prevState.tasks.map(task => {
+  //         if (task.id === taskId) {
+  //           return {
+  //             ...task,
+  //             completed: !task.completed,
+  //           };
+  //         }
+
+  //         return task;
+  //       }),
+  //     };
+  //   });
+  // };
+
   updateCompleted = taskId => {
     this.setState(prevState => ({
       tasks: prevState.tasks.map(task =>
@@ -49,7 +65,6 @@ export default class App extends Component {
   };
 
   changeFilter = filter => {
-    // ПОДРОБНОСТИ В FILTER.JSX
     this.setState({ filter });
   };
 
@@ -61,32 +76,16 @@ export default class App extends Component {
     );
   };
 
-  // ===== IDEA FOR HW 2 ==== //
-  // countTotalVotes = () => {
-  //  return Object.values(state).reduce().....
-  // }
-  //
-  //countPercentage = (totalVotes, posVotes) => {
-  //  return ?? totalVotes / posVotes ??
-  // }
-  //
-
   render() {
-    // const total = this.countTotalVotes()
-    // <h1> { total } </h1>;
-    // const posR = this.countPercentage(total, this.state.good)
-    //
-    //
     const { filter } = this.state;
 
-    const visibleTasks = this.getVisibleTasks;
+    const visibleTasks = this.getVisibleTasks();
 
     return (
       <Layout>
         <TaskEditor onAddTask={this.addTask} />
-        {visibleTasks.length > 1 && (
-          <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )}
+
+        <Filter value={filter} onChangeFilter={this.changeFilter} />
         {visibleTasks.length > 0 && (
           <TaskList
             tasks={visibleTasks}
@@ -98,6 +97,23 @@ export default class App extends Component {
     );
   }
 }
+
+// ===== IDEA FOR HW 2 ==== //
+// countTotalVotes = () => {
+//  return Object.values(state).reduce().....
+// }
+//
+//countPercentage = (totalVotes, posVotes) => {
+//  return ?? totalVotes / posVotes ??
+// }
+//
+
+// render() {
+// const total = this.countTotalVotes()
+// <h1> { total } </h1>;
+// const posR = this.countPercentage(total, this.state.good)
+//
+//
 
 // <>
 //     <Layout>

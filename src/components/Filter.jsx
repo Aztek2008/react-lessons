@@ -1,5 +1,4 @@
 import React from 'react';
-import './TaskEditor/TaskEditor.css';
 
 export default function Filter({ value, onChangeFilter }) {
   return (

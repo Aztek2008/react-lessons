@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import './TaskEditor.css';
 
 export default class TaskEditor extends Component {
@@ -20,9 +19,7 @@ export default class TaskEditor extends Component {
     this.state.text !== '' && this.props.onAddTask(this.state.text);
     // this.props.onAddTask(this.state.text);
 
-    this.setState({
-      text: '',
-    });
+    this.setState({ text: '' });
   };
 
   render() {
@@ -37,18 +34,11 @@ export default class TaskEditor extends Component {
             onChange={this.handleChange}
           />
         </label>
+
         <button type="submit" className="TaskEditor-button">
-          Add Note
+          Добавить заметку
         </button>
       </form>
     );
   }
-}
-
-{
-  /* <div className="TaskEditor">
-<button type="button" onClick={onAddTask}>
-  Add Task
-</button>
-</div> */
 }
