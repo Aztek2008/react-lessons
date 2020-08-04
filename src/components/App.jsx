@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 import Layout from './Layout/Layout';
 import TaskList from './TaskList/TaskList';
 import TaskEditor from './TaskEditor/TaskEditor';
@@ -19,7 +19,7 @@ export default class App extends Component {
 
   addTask = text => {
     const task = {
-      id: uuid(),
+      id: uuidv4(),
       text,
       completed: false,
     };
@@ -97,16 +97,6 @@ export default class App extends Component {
     );
   }
 }
-
-// ===== IDEA FOR HW 2 ==== //
-// countTotalVotes = () => {
-//  return Object.values(state).reduce().....
-// }
-//
-//countPercentage = (totalVotes, posVotes) => {
-//  return ?? totalVotes / posVotes ??
-// }
-//
 
 // render() {
 // const total = this.countTotalVotes()
