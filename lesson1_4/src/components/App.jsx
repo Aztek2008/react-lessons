@@ -1,21 +1,45 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Layout from './Layout/Layout';
-import TaskList from './TaskList/TaskList';
-import TaskEditor from './TaskEditor/TaskEditor';
-import Filter from './Filter';
 // import createTask from '../utils/create-task';
 // import Counter from './Counter';
 // import Section from './Section';
 // import Product from './Product/Product';
 // import BookList from './BookList';
 // import favouriteBooks from '../books.json';
+import Layout from './Layout/Layout';
+import TaskList from './TaskList/TaskList';
+import TaskEditor from './TaskEditor/TaskEditor';
+import Filter from './Filter';
+// import Modal from './Modal/Modal';
+import Clock from './Clock/Clock';
+import Tabs from './Tabs/Tabs';
+import tabs from '../books.json';
 
 export default class App extends Component {
   state = {
     tasks: [],
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    console.log('Mount!');
+
+    const persistedTasks = localStorage.getItem('tasks');
+    // this.setState({ tasks: JSON.parse(persistedTasks) }); // return [] - not null!
+
+    persistedTasks && this.setState({ tasks: JSON.parse(persistedTasks) });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Coponent did update!');
+
+    if (prevState.tasks !== this.state.tasks) {
+      localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
+    }
+  }
+
+  componentWillUnmount() {}
 
   addTask = text => {
     const task = {
@@ -39,23 +63,6 @@ export default class App extends Component {
     });
   };
 
-  // updateCompleted = taskId => {
-  //   this.setState(prevState => {
-  //     return {
-  //       tasks: prevState.tasks.map(task => {
-  //         if (task.id === taskId) {
-  //           return {
-  //             ...task,
-  //             completed: !task.completed,
-  //           };
-  //         }
-
-  //         return task;
-  //       }),
-  //     };
-  //   });
-  // };
-
   updateCompleted = taskId => {
     this.setState(prevState => ({
       tasks: prevState.tasks.map(task =>
@@ -76,9 +83,12 @@ export default class App extends Component {
     );
   };
 
-  render() {
-    const { filter } = this.state;
+  toggleModal = () => {
+    this.setState(prevState => ({ showModal: !prevState.showModal }));
+  };
 
+  render() {
+    const { filter, showModal } = this.state;
     const visibleTasks = this.getVisibleTasks();
 
     return (
@@ -93,6 +103,28 @@ export default class App extends Component {
             onUpdateTask={this.updateCompleted}
           />
         )}
+        {/* <div>
+          {!showModal && (
+            <button className="TaskEditor-button" onClick={this.toggleModal}>
+              Show Modal
+            </button>
+          )}
+          {showModal && (
+            <Modal onClose={this.toggleModal}>
+              <p>Modal content here</p>
+              <button className="TaskEditor-button" onClick={this.toggleModal}>
+                Close Modal
+              </button>
+            </Modal>
+          )}
+        </div> */}
+
+        <button className="TaskEditor-button" onClick={this.toggleModal}>
+          {showModal ? 'Hide' : 'Show'} Clock
+        </button>
+        {showModal && <Clock />}
+
+        <Tabs items={tabs} />
       </Layout>
     );
   }

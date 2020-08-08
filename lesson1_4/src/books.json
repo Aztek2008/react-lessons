@@ -1,0 +1,14 @@
+[
+  {
+    "label": "Tab-1",
+    "content": "JS for beginners. Это вторая статья из серии “От нуля до героя фронтенда”. В первой части вы научились создавать раскладку при помощи HTML и CSS и познакомились с некоторыми лучшими практиками. Во второй части мы сосредоточимся на изучении языка JavaScript, способах добавления интерактива в интерфейс, принципах и основных шаблонах в JavaScript и на создании веб-приложений."
+  },
+  {
+    "label": "Tab-2",
+    "content": "React basics. Our comprehensive guide to CSS flexbox layout. This complete guide explains everything about flexbox, focusing on all the different possible properties for the parent element (the flex container) and the child elements (the flex items). It also includes history, demos, patterns, and a browser support chart. "
+  },
+  {
+    "label": "Tab-3",
+    "content": "React Router overview. This establishes the main-axis, thus defining the direction flex items are placed in the flex container. Flexbox is (aside from optional wrapping) a single-direction layout concept. Think of flex items as primarily laying out either in horizontal rows or vertical columns. "
+  }
+]

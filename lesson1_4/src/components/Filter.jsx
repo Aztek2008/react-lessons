@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Filter({ value, onChangeFilter }) {
   return (
-    <div>
+    <div style={{ width: 600 }}>
       <input
         type="text"
         className="TaskEditor-input"
