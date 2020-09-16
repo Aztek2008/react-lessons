@@ -29,7 +29,7 @@ export default class SearchForm extends Component {
         <label>
           <input
             type="text"
-            value={this.state.inputValue}
+            // value={this.state.inputValue}
             onChange={this.handleChange}
           />
         </label>
