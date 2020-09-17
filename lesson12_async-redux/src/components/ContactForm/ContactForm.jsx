@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CSSTransition } from "react-transition-group";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { connect } from "react-redux";
 import NumberFormat from "react-number-format";
 
@@ -38,7 +38,7 @@ class ContactForm extends Component {
     existedContacts.includes(newName) && this.showNotification();
 
     this.props.onAddContact({
-      id: uuidv4(),
+      // id: uuidv4(), //TODO:WHAT TO DO WITH THIS ID
       name: name,
       number: number,
     });
@@ -51,7 +51,7 @@ class ContactForm extends Component {
 
   showNotification = () => {
     this.setState({ existedContact: true });
-    setTimeout(() => this.setState({ existedContact: false }), 5000);
+    setTimeout(() => this.setState({ existedContact: false }), 3000);
   };
 
   render() {
