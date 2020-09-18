@@ -24,9 +24,9 @@ const removeContact = (state, action) => {
 // ======      CONTACTS REDUCER    ============
 // =============================================
 const contactReducer = createReducer([], {
-  // [contactsActions.fetchContactsSuccess]: (state, action) => action.payload,
+  [contactsActions.fetchContactsSuccess]: (state, action) => action.payload,
   [contactsActions.addContactSuccess]: addContact,
-  [contactsActions.removeContact]: removeContact,
+  [contactsActions.removeContactSuccess]: removeContact,
 });
 
 // =============================================
@@ -41,8 +41,16 @@ const filterReducer = createReducer("", {
 // =============================================
 const loadingReducer = createReducer(false, {
   [contactsActions.addContactRequest]: () => true,
+  [contactsActions.fetchContactsRequest]: () => true,
+  [contactsActions.removeContactRequest]: () => true,
+
   [contactsActions.addContactSuccess]: () => false,
+  [contactsActions.fetchContactsSuccess]: () => false,
+  [contactsActions.removeContactSuccess]: () => false,
+
   [contactsActions.addContactError]: () => false,
+  [contactsActions.fetchContactsError]: () => false,
+  [contactsActions.removeContactError]: () => false,
 });
 
 export default combineReducers({

@@ -1,33 +1,9 @@
 {
   "contacts": [
     {
-      "name": "Aztek2008",
+      "name": "Lara Tyulpanova",
       "number": "(345) 567-8899",
       "id": 1
-    },
-    {
-      "name": "Lara Tyulpanova",
-      "number": "(067) 500-1246",
-      "id": 2
-    },
-    {
-      "contact": {
-        "name": "Lara Tyulpanova",
-        "number": "(345) 567-8899"
-      },
-      "id": 3
-    },
-    {
-      "contact": {
-        "name": "gosha",
-        "number": "(067) 500-1246"
-      },
-      "id": 4
-    },
-    {
-      "name": "Lara Tyulpanova",
-      "number": "(345) 567-8899",
-      "id": 5
     }
   ]
 }

@@ -29,6 +29,7 @@ const ContactList = ({ contacts }) => {
 
 const mapStateToProps = (state) => {
   const { contacts, filter } = state.contacts;
+
   const filterToLowerCase = filter.toLowerCase();
   const visibleContacts = contacts.filter(
     (contact) =>
